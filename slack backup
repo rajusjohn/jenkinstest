@@ -1,0 +1,351 @@
+Raju John [4:07 PM]
+#!/bin/bash
+cat /opt/voxeo/prophecy/logs/vcs/lsd | while read line
+do
+  tar -cvzf $line.gz $line --remove-files
+done
+
+
+Raju John [6:53 PM]
+ls -ltrh |awk ‘{print $9}’
+
+Raju John [7:18 PM]
+grep emmi* *|grep -i lb
+
+Raju John [9:47 PM]
+find -name \*.txt -print0  | xargs -0 gzip -9v
+
+Raju John [2:39 PM]
+grep cxpserver92emmi las.voxeo.net |grep -i lb
+egrep -iA4 “^zone.*hosted.aspect-cloud.net*” repo/VoiceCenterIVR/conf-production/las/named.conf/masterzones-*
+RJOHN-L17MBA1:Nagios Configs rjohn$ grep -irl “splunk127.orl.voxeo.net” ./*
+
+RJOHN-L17MBA1:nms105.orl.voxeo.net rjohn$vim services/nrpe_splunk.cfg
+RJOHN-L17MBA1:nms105.orl.voxeo.net rjohn$ nagios -v nagios.cfg
+RJOHN-L17MBA1:nms105.orl.voxeo.net rjohn$ git diff
+RJOHN-L17MBA1:nms105.orl.voxeo.net rjohn$ git add -A
+RJOHN-L17MBA1:nms105.orl.voxeo.net rjohn$ git commit -m “https://jira.aspect.com/browse/NOC-11136”
+RJOHN-L17MBA1:nms105.orl.voxeo.net rjohn$ git push (edited) 
+
+Raju John [2:45 PM]
+grep mbz* lass.voxeo.net-private |grep -i lb
+
+Raju John [7:04 PM]
+#!/bin/bash
+cat bak.txt | while read line
+do
+gzip -9v $line
+done
+
+Raju John [7:10 PM]
+#!/bin/bash
+cat bak.txt | while read line
+do
+rm -rf  $line
+done
+
+Raju John [3:55 PM]
+password:..p@ssw0rd
+
+Raju John [4:38 PM]
+```#!/bin/bash
+ls -l  --ignore="*.gz" --ignore="*.sh" --ignore="*.txt" | awk '{print $9}' >bak.txt
+cat bak.txt | while read line
+do
+#gzip -9v $line
+#rm -rf $line
+#rm -rf bak.txt
+done```
+(edited)
+
+Raju John [3:15 PM]
+rm -rf /archive/backups/bro{1..139}.las.voxeo.net/vxml/vxml.2017.06.{01..20}*
+rm -rf /archive/backups/bro{1..139}.las.voxeo.net/vcs/log_2017_06_{01..20}*
+
+Raju John [4:13 AM]
+PATH=$PATH:$HOME/bin
+export JAVA_HOME=/home/cxp/jdk-1.8.0_51/bin/java
+
+export PATH=$PATH:/home/cxp/jdk-1.8.0_51/bin
+
+Raju John [5:15 AM]
+free && sync && echo 3 > /proc/sys/vm/drop_caches && echo “” && free -m
+
+Raju John [10:55 PM]
+ ```3315  2018-03-13 17:23:08 useradd fsmith
+ 3316  2018-03-13 17:23:14 passwd fsmith
+ 3317  2018-03-13 17:23:32 visudo
+ 3318  2018-03-13 17:24:08 usermod -G wheel fsmith
+ 3319  2018-03-13 17:24:13 groups fsmith```
+(edited)
+
+Raju John [12:21 AM]
+```find /archive/backups/bro{1..139}.orl.voxeo.net/vxml/ -name "vxml.2017.08*" -print0 | xargs -0 rm
+find /archive/backups/bro{1..139}.orl.voxeo.net/vcs/ -name "log_2017_07*" -print0 | xargs -0 rm```
+
+Raju John [12:34 AM]
+for `syslog121.las.voxeo.net`
+find /rsanx/logs/las/2018/ ! -name “*.gz” -daystart -mtime +1 -print0 | xargs -0 gzip -f
+
+Raju John [3:35 AM]
+mv querylog querylog.02202018 ; touch querylog ; killall -1 named
+
+Raju John [2:59 AM]
+export dirs=$( ls | head )
+
+[root@custhome111 2018-04-03-12-58]# for e in $dirs ; do /raid/scripts/load-aware-rsync.sh -v -r /raid/backups/archives/recordings/2018-04-03-12-58/$e archive103.las.voxeo.net:/archive/backups/archives/recordings/2018-04-03-12-58 ; done
+
+Raju John [8:45 AM]
+`export dirs=$(ls -ltr | sed -n '1,19p'| awk '{print $9}' | xargs du -hs | awk '{print $2}')` (edited) 
+`for e in $dirs ; do /raid/scripts/load-aware-rsync.sh -v -r /raid/backups/archives/recordings/2018-04-03-12-58/$e archive103.las.voxeo.net:/archive/backups/archives/recordings/2018-04-03-12-58 ; done` (edited) 
+
+Raju John [3:13 PM]
+for i in bro4lbg.fra.aspect-cloud.net bro5lyd.fra.aspect-cloud.net zipdmz6a.fra.voxeo.net zipdata3a.fra.voxeo.net sbc1bt.fra.voxeo.net bro2.fra.aspect-cloud.net zipreportdb3.fra.voxeo.net srn3.fra.aspect-cloud.net bro1lbg.fra.aspect-cloud.net zipvoice1a.fra.voxeo.net sbc105.fra.voxeo.net bro4lyd.fra.aspect-cloud.net zipvoice4a.fra.voxeo.net zipdata1a.fra.voxeo.net bro1bt.fra.voxeo.net bro2lbg.fra.aspect-cloud.net sbc107.fra.voxeo.net zipdata5a.fra.voxeo.net bro4.fra.aspect-cloud.net zipvoice3a.fra.voxeo.net sbc106.fra.voxeo.net sbc2bt.fra.voxeo.net zipreportdb4.fra.voxeo.net bro3.fra.aspect-cloud.net bro3bt.fra.voxeo.net nms1.fra.voxeo.net bro3lyd.fra.aspect-cloud.net;do ssh -n $i “ntpdate -u time” >>/tmp/ntp.txt;done
+
+Raju John [8:34 AM]
+for i in $(cat /tmp/test.txt) ;do ssh  $i “ntpdate -u time” >>/tmp/ntp.txt;done
+
+Raju John [9:59 AM]
+```FOR VO
+find /mnt/VoiceObjects/VOD_{01..30}/VoiceObjects/Platform/WEB-INF/activemq-data-90{01..30} -mtime +10 -type f \( -name '*.gz' -o -name '*.log' \) -print0
+
+
+FOR CXP
+find /mnt/VoxeoCXP/CXP_{01..30}/VoxeoCXP/Platform/WEB-INF/activemq-data-90{01..30} -mtime +10 -type f \( -name '*.gz' -o -name '*.log' \) -print0```
+(edited)
+```find /mnt/VoiceObjects/VOD_0{01..30}/VoiceObjects/Platform/WEB-INF/activemq-data-900{01..30} -mtime +10 -type f \( -name '*.gz' -o -name '*.log' \) -print0```
+
+Raju John [1:23 PM]
+```for i in $(cat /home/rjohn/test.txt) ;do ssh  $i "hostname && find /home/cxp_server/VoxeoCXP/Platform/WEB-INF/activemq-data-9001 -type f \( -name 'db.redo.gz' -o -name 'db.data.gz' -o -name 'lock.gz' \)"```
+
+Raju John [5:56 AM]
+find /archive/backups/bro*.{orl,las}.voxeo.net/ -type f -mtime +250 -print -exec rm -rf {} \;
+
+Raju John [5:07 AM]
+```#!/usr/bin/expect -f
+set ip [lindex $argv 0];
+spawn ssh rjohn@tools1.orl.voxeo.net
+set prompt ":|#|\\\$"
+expect "assword:"
+send "Aspect123$\r"
+interact -o -nobuffer -re $prompt return
+send "sudo -i\r"
+expect "]#"
+send "ssh $ip\r"
+interact```
+```RJOHN-L17MBA1:~ rjohn$ cat orl
+#!/usr/bin/expect -f
+
+set ip [lindex $argv 0];
+spawn ssh ad\\rjohn@jump2.orls.voxeo.net
+set prompt ":|#|\\\$"
+set timeout 5
+expect "assword:"
+send "Dell@50101\r"
+interact -o -nobuffer -re $prompt return
+send "ssh ad-aspect\\\\rjohn@$ip\r"
+expect "assword:"
+send "Dell@50101\r"
+#interact -o -nobuffer -re $prompt return
+#send "sudo -i\r"
+interact```
+
+Raju John [5:17 AM]
+```#!/usr/bin/expect -f
+
+set ip [lindex $argv 0];
+spawn ssh ad\\rjohn@jump2.lass.voxeo.net
+set prompt ":|#|\\\$"
+set timeout 5
+expect "assword:"
+send "Dell@50101\r"
+interact -o -nobuffer -re $prompt return
+send "ssh ad\\\\rjohn@$ip\r"
+expect {
+"(yes/no)"  {send "yes\r"}
+"assword:" {send "Dell@50101$\r"}
+}
+expect "assword:"
+send "Dell@50101\r"
+#send "sudo -i\r"
+interact```
+
+Raju John [11:36 PM]
+```find /mnt/VoiceObjects/VOD_{01..30}/VoiceObjects/Platform/WEB-INF/activemq-data-90{01..30} -mtime +10 -type f \( -name '*.gz' -o -name '*.log' \) -print0 | xargs -0 rm -rf && find /mnt/VoiceObjects/VOD_0{01..30}/VoiceObjects/Platform/WEB-INF/activemq-data-900{01..30} -mtime +10 -type f \( -name '*.gz' -o -name '*.log' \) -print0 | xargs -0 rm -rf```
+
+Raju John [6:04 AM]
+```find /archive/  -type f \( -name '*.pgp' -o -name '*.wav'  \) -mtime +1 -print0 | sudo xargs -0 gzip -9v```
+
+Raju John [11:32 PM]
+```user Raju.John
+password phieng3johSh
+ 
+ 
+DFW (Dallas)
+IP : 72.32.123.140
+Group-name: AspectSoftware
+password: 2eTrAhaStAcra
+ 
+IAD:  ( Virginia)
+FW IP:  146.20.47.243
+GROUP-name : AspectSoftwareInc
+password: KU8sYcvCy78kC
+ 
+LON: ( UK)
+FW IP:    78.136.63.4
+GROUP-name : ASPECT_SOFTWARE_INC
+password: CjPiYcK4elI8sy2```
+
+Raju John [7:15 PM]
+```from fabric.api import hide, task, run, env, cd
+from fabric.operations import sudo, run, put
+from fabric.decorators import parallel, hosts, roles
+
+env.hosts = ['cloud_user@52.53.154.228:22', 'cloud_user@18.144.25.5:22']
+
+
+#env.user = 'cloud_user'
+env.passwords = {'cloud_user@52.53.154.228:22':'rajusjohn@2015', 'cloud_user@18.144.25.5:22':'Dell@50101'}
+
+
+def move_file():
+    with hide('running', 'status'):
+        with cd('/home/user'):
+            sudo('mv raju raju_$(hostname)_$(date +%F_%R) && scp -pr /home/user/raj* cloud_user@18.144.25.5:/home/cloud_user')
+            #run('hostname')
+
+
+#def scp():
+#    run('cd /home/cloud_user')
+#        put('/home/cloud_user/' , '/home/frodo/tmp')
+
+
+def host_type():
+    run('uname -s')
+
+def diskspace():
+    run('df -h')```
+
+Raju John [5:25 PM]
+```from fabric.api import hide, task, run, env, cd
+from fabric.operations import sudo, run, put
+from fabric.decorators import parallel, hosts, roles
+
+#env.hosts = ['cloud_user@54.183.79.219:22' , 'cloud_user@54.153.110.155:22']
+
+
+#env.user = 'cloud_user'
+#env.passwords = {'cloud_user@54.183.79.219:22':'Dell@50101' , 'cloud_user@54.153.110.155:22':'rajusjohn@2015'}
+
+
+def move_file():
+        with hide('running', 'status'):
+                with cd('/home/cloud_user'):
+                        sudo('mv raju raju_$(hostname)_$(date +%F_%R)')
+
+
+def copy():
+        with hide('running', 'status'):
+#               with cd('/home/cloud_user'):
+                        sudo('rsync --remove-source-files -v /home/cloud_user/raj* cloud_user@54.153.110.155:/home/cloud_user')
+
+
+#def scp():
+#       run('cd /home/cloud_user')
+#               put('/home/cloud_user/' , '/home/frodo/tmp')
+
+
+
+
+def hostname():
+    run('hostname')
+
+def host_type():
+    run('uname -s')
+
+def diskspace():
+    run('df -h')```
+(edited)
+
+Raju John [6:25 PM]
+```from fabric.api import hide, task, run, env, cd
+from fabric.operations import sudo, run, put
+from fabric.decorators import parallel, hosts, roles
+
+#env.hosts = ['cloud_user@54.183.79.219:22' , 'cloud_user@54.153.110.155:22']
+
+
+#env.user = 'cloud_user'
+#env.passwords = {'cloud_user@54.183.79.219:22':'Dell@50101' , 'cloud_user@54.153.110.155:22':'rajusjohn@2015'}
+
+@hosts('54.67.60.95')
+def move_file():
+        with hide('running', 'status'):
+                with cd('/home/cloud_user'):
+                        date = sudo('date +%s')
+#                       print type(date), date
+                        filedate = sudo('date -r /home/cloud_user/raj* +%s')
+#                       print type(filedate), filedate
+                        if filedate < date:
+                                print "file is not growing"
+                                sudo('mv raju raju_$(hostname)_$(date +%F_%R) && rsync --remove-source-files -v /home/cloud_user/raj* cloud_user@13.52.77.3:/home/cloud_user')
+                        else:
+                                print "file is growing"```
+
+Raju John [3:30 PM]
+```▽
+#!/usr/bin/python
+from fabric.api import hide, task, run, env, cd
+from fabric.operations import sudo, run, put
+from fabric.decorators import parallel, hosts, roles
+from fabric.api import settings,run,env,cd
+from fabric.colors import *
+
+env.user = 'root'
+
+def file():
+  with cd('/opt/voxeo/prophecy/logs/vxml'):
+   date=int(run('date +%s'))
+   filedate = int(run('date -r motmeter* +%s'))
+
+   if date-filedate > 1:
+     print(green("Motmeter file is not growing....Transferring file to meter server"))
+     run('find . -name "motmeter*" -type f -exec mv {} {}_$(hostname)_$(date +%F) \;')
+     print(green("Compressing the file..."))
+     run('gzip -9v motmeter*')
+     print(green("Moving file to meter server"))
+     with settings(prompts={'''root@meter1.lhr.aspect-cloud.net's password: ''' : 'Blu3Bl00d'}):
+        run('rsync --remove-source-files -v motmeter* meter1.lhr.aspect-cloud.net:/data/recovery/vxml')
+        print(green("Motmeter file has been moved to meter server"))
+   else:
+     print(red("Motmeter file is growing...Exiting"))```
+
+Raju John [6:35 PM]
+```find . -type f \( ! -iname "*.tar.gz"  ! -iname "*.tar.bz2" \) -print0```
+
+Raju John [5:44 AM]
+```[cloud_user@rjohn1c ~]$ cat test
+#!/usr/bin/expect -f
+set f [open "hosts.txt"]
+set hosts [split [read $f] "\n"]
+close $f
+
+foreach hosts $hosts {
+spawn ssh-copy-id cloud_user@$hosts
+expect {
+"(yes/no)"  {send "yes\r"}
+}
+expect "password:"
+send "Dell@50101\r"
+interact
+}```
+
+Raju John [3:04 AM]
+```find . -type f -name "*.recording" | while read FILE ; do new="$(echo ${FILE} | sed -e 's/\!/test/g')" ;mv "${FILE}" "${new}" ; done```
+
+Raju John [6:14 AM]
+```#elink="https://monitor.aspect-cloud.net/api/v1/alerts?q%5Bcreated_at_gt%5D=2019-01-01%2000:00:00&q%5Bcreated_at_lt%5D=2019-07-09%2000:00:00&page="
+
+#i=1
+
+#until ((i>150));do elinks $elink$i >> /tmp/raju/json ;((i++));done```
