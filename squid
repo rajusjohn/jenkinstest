@@ -1,0 +1,34 @@
+#!/usr/bin/expect -f
+set timeout 05
+set tool tools1.orl.voxeo.net
+set ip [lindex $argv 0];
+spawn ssh $tool
+expect ">"
+send "sudo su -\r"
+expect ">"
+expect ">"
+set time -1
+send "./progressive_active.sh\r"
+expect ">"
+send "ssh $ip\r"
+expect ">"
+send "reboot\r"
+expect ">"
+send "exit\nexit\nexit\r"
+expect ">"
+sleep 120
+set time -1
+send "ping $ip\r"
+expect "$ #"
+send "ssh tool\r"
+expect ">"
+send "sudo su -\r"
+expect ">"
+send "ssh $ip\r"
+expect ">"
+send "service squida status\r"
+expect ">"
+send "service squidb status\r"
+expect">"
+send "exit\nexit\nexit\r"
+interact

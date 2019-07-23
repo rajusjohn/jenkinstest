@@ -1,0 +1,24 @@
+#!/bin/bash
+
+ip=$1
+
+if [ $# == 0 ]
+then
+    echo "No Hostname Provided"
+fi
+
+prefix=`echo $ip | cut -d '.' -f 1`
+
+if [ $prefix == 'vg161' ] || [ $prefix == 'vg162' ] || [ $prefix == 'vg163' ] || [ $prefix == 'vg164' ]
+then
+    ./vg161-164 $ip
+
+elif [ $prefix == 'vg165' ]
+then
+    ./vg165 $ip
+
+else [ $prefix == 'squid161' ] || [ $prefix == 'squid162' ] || [ $prefix == 'squid163' ] || [ $prefix == 'squid164' ]
+
+       ./squid $ip
+
+fi

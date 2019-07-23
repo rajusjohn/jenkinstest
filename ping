@@ -1,0 +1,13 @@
+ip=$1
+ServerXY_W=1
+echo -n "waiting for $ip ..."
+while (($ServerXY_W == 1))
+do
+  if ping -c 1 -W 2000 $ip &> /dev/null
+  then
+     echo "$ip is back online!"
+     ServerXY_W=0
+  else
+     echo -n "."
+  fi
+done

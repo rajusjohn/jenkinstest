@@ -1,0 +1,63 @@
+#!/usr/bin/expect -f
+set timeout 05
+set tool tools1.orl.voxeo.net
+set ip [lindex $argv 0];
+set passtelnet ..Cool..Fresh
+set passenable ..Clear..Calm
+set passenable1 enablepassword
+spawn ssh $tool
+expect ">"
+send "sudo su -\r"
+expect ">"
+send "./progressive_active.sh\r"
+expect ">"
+send "telnet $ip\r"
+expect {
+"(yes/no)"  {send "yes\r"}
+"password: " {send "$passtelnet"}
+}
+expect -nocase "Password: "
+send "$passtelnet\r"
+expect ">"
+send "enable\r"
+expect "password: "
+send "$passenable\r"
+expect ">"
+set time -1
+send "show isdn act\r"
+expect ">"
+send "reload\r"
+expect "confirm"
+send "\r"
+expect ">"
+send "exit\r"
+expect ">"
+send "exit\r"
+expect ">"
+sleep 60
+set time -1
+send "./ping $ip\r"
+expect ">"
+send "ssh $tool\r"
+expect ">"
+send "sudo su -\r"
+expect ">"
+send "telnet $ip\r"
+expect {
+"(yes/no)"  {send "yes\r"}
+"password: " {send "$passtelnet"}
+}
+expect -nocase "password: "
+send "$passtelnet\r"
+expect ">"
+send "enable\r"
+expect "password: "
+send "$passenable\r"
+expect "password: "
+send "$passenable1\r"
+expect ">"
+set time -1
+send "show isdn nfas group 1\r"
+expect ">"
+send "quit\r"
+interact
