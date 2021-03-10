@@ -1,10 +1,14 @@
 #!/bin/bash
 #Designed to help the Ops for deploying the apps
 
-PATH1=` ls -ltr /app/dre/thirdparty/apache-tomcat-9.0.10/webapps| awk '{print $11}'| sed '1d'|sed -n -e 1p -e 3p -e 5p -e 7p|cut -d/ -f 1,2,3,4,5| sed -n '1p' `
-PATH2=` ls -ltr /app/dre/thirdparty/apache-tomcat-9.0.10/webapps| awk '{print $11}'| sed '1d'|sed -n -e 1p -e 3p -e 5p -e 7p|cut -d/ -f 1,2,3,4,5| sed -n '2p' `
-PATH3=` ls -ltr /app/dre/thirdparty/apache-tomcat-9.0.10/webapps| awk '{print $11}'| sed '1d'|sed -n -e 1p -e 3p -e 5p -e 7p|cut -d/ -f 1,2,3,4,5| sed -n '3p' `
-PATH4=` ls -ltr /app/dre/thirdparty/apache-tomcat-9.0.10/webapps| awk '{print $11}'| sed '1d'|sed -n -e 1p -e 3p -e 5p -e 7p|cut -d/ -f 1,2,3,4,5| sed -n '4p' `
+PATH1=` ls -ltr /app/dre/thirdparty/apache-tomcat-9.0.10/webapps| grep -i war|  awk '{print $11}'|cut -d/ -f 1,2,3,4,5|sed -n '1p' `
+PATH2=` ls -ltr /app/dre/thirdparty/apache-tomcat-9.0.10/webapps| grep -i war|  awk '{print $11}'|cut -d/ -f 1,2,3,4,5|sed -n '2p' `
+PATH3=` ls -ltr /app/dre/thirdparty/apache-tomcat-9.0.10/webapps| grep -i war|  awk '{print $11}'|cut -d/ -f 1,2,3,4,5|sed -n '3p' `
+PATH4=` ls -ltr /app/dre/thirdparty/apache-tomcat-9.0.10/webapps| grep -i war|  awk '{print $11}'|cut -d/ -f 1,2,3,4,5|sed -n '4p' `
+DELFILE1=` ls -ltr /app/dre/thirdparty/apache-tomcat-9.0.10/webapps| grep -i war|  awk '{print $9}'| sed -n '1p'| rev | cut -d'.' -f 2,3,4,5,6,7| rev `
+DELFILE2=` ls -ltr /app/dre/thirdparty/apache-tomcat-9.0.10/webapps| grep -i war|  awk '{print $9}'| sed -n '2p'| rev | cut -d'.' -f 2,3,4,5,6,7| rev `
+DELFILE3=` ls -ltr /app/dre/thirdparty/apache-tomcat-9.0.10/webapps| grep -i war|  awk '{print $9}'| sed -n '3p'| rev | cut -d'.' -f 2,3,4,5,6,7| rev `
+DELFILE4=` ls -ltr /app/dre/thirdparty/apache-tomcat-9.0.10/webapps| grep -i war|  awk '{print $9}'| sed -n '4p'| rev | cut -d'.' -f 2,3,4,5,6,7| rev `
 PID=` ps -ef | grep 'apache-tomcat-9.0.10' | grep java | grep -v grep | awk '{ print $2 }' `
 printf '1. Start\n'
 printf '2. Shutdown\n'
@@ -13,8 +17,8 @@ printf '2. Shutdown\n'
         read NUM
         case $NUM in
         1)
-                D1=` cat current | sed -n -e 1p `; D2=` cat current | sed -n -e 2p `; D3=` cat current | sed -n -e 3p `; D4=` cat current | sed -n -e 4p `;
-                C1=` cat current |cut -d/ -f 5|sed -n -e 1p `; C2=` cat current |cut -d/ -f 5|sed -n -e 2p `;C3=` cat current |cut -d/ -f 5|sed -n -e 3p `; C4=` cat current |cut -d/ -f 5|sed -n -e 4p`;
+                D1=` cat /home/dreadmin/scripts/current | sed -n -e 1p `; D2=` cat /home/dreadmin/scripts/current | sed -n -e 2p `; D3=` cat /home/dreadmin/scripts/current | sed -n -e 3p `; D4=` cat /home/dreadmin/scripts/current | sed -n -e 4p `;
+                C1=` cat /home/dreadmin/scripts/current |cut -d/ -f 5|sed -n -e 1p `; C2=` cat /home/dreadmin/scripts/current |cut -d/ -f 5|sed -n -e 2p `;C3=` cat /home/dreadmin/scripts/current |cut -d/ -f 5|sed -n -e 3p `; C4=` cat /home/dreadmin/scripts/current |cut -d/ -f 5|sed -n -e 4p`;
                 VARFILE1=` grep -is using /app/var/lsurf/log/$C1/control-script.log| tail -n 1| awk '{print $2}' `
                 VARFILE2=` grep -is using /app/var/lsurf/log/$C2/control-script.log| tail -n 1| awk '{print $2}' `
                 VARFILE3=` grep -is using /app/var/lsurf/log/$C3/control-script.log| tail -n 1| awk '{print $2}' `
@@ -36,17 +40,16 @@ printf '2. Shutdown\n'
      1)
           echo "Identifying env-var file";
           echo "Last used var file is $VARFILE1";
-          echo "**************************Deploying $CMD1***************************";
+          echo "**************************Deploying $C1***************************";
           cd $D1/bin;
           ./upd-env $VARFILE1;
+#         $D1/bin/upd-env $VARFILE1;
           echo -e "2. $C2";echo -e "3. $C3";echo -e "4. $C4";echo "Type E to exit";continue;
           ;;
-
-
-2)
+     2)
           echo "Identifying env-var file";
           echo "Last used var file is $VARFILE2";
-          echo "**************************Deploying $CMD2***************************";
+          echo "**************************Deploying $C2***************************";
           cd $D2/bin;
           ./upd-env $VARFILE2;
           echo -e "3. $C3";echo -e "4. $C4";echo "Type E to exit";continue;
@@ -54,7 +57,7 @@ printf '2. Shutdown\n'
      3)
           echo "Identifying env-var file";
           echo "Last used var file is $VARFILE3";
-          echo "**************************Deploying $CMD3***************************";
+          echo "**************************Deploying $C3***************************";
           cd $D3/bin;
           ./upd-env $VARFILE3;
           echo -e "4. $C4";echo "Type E to exit";continue;
@@ -62,7 +65,7 @@ printf '2. Shutdown\n'
      4)
           echo "Identifying env-var file";
           echo "Last used var file is $VARFILE4";
-          echo "**************************Deploying $CMD4***************************";
+          echo "**************************Deploying $C4***************************";
           cd $D4/bin;
           ./upd-env $VARFILE4;
           ;;
@@ -86,7 +89,7 @@ printf '2. Shutdown\n'
                   break
                   done;;
         2)
-echo "$PATH1" > current;echo "$PATH2" >> current;echo "$PATH3" >> current;echo "$PATH4" >> current
+                echo "$PATH1" > /home/dreadmin/scripts/current;echo "$PATH2" >> /home/dreadmin/scripts/current;echo "$PATH3" >> /home/dreadmin/scripts/current;echo "$PATH4" >> /home/dreadmin/scripts/current
                 printf "Type S to shutdown the tomcat \nType R to remove the packages\nType E for exit\n"
                         while read SHUTDOWN;do
                         case $SHUTDOWN in
@@ -121,12 +124,20 @@ echo "$PATH1" > current;echo "$PATH2" >> current;echo "$PATH3" >> current;echo "
                                 ;;
                           R)
                                 printf 'Removing packages\n';
-                                rm -rf /app/dre/thirdparty/apache-tomcat-9.0.10/webapps/*
+                                echo "$DELFILE1";
+                                echo "$DELFILE2";
+                                echo "$DELFILE1";
+                                echo "$DELFILE4";
+                                cd /app/dre/thirdparty/apache-tomcat-9.0.10/webapps/
+                                rm -rf "$DELFILE1" "$DELFILE1.war";
+                                rm -rf "$DELFILE2" "$DELFILE2.war";
+                                rm -rf "$DELFILE3" "$DELFILE3.war";
+                                rm -rf "$DELFILE4" "$DELFILE4.war";
                                 ;;
                           E)
                                 exit 0
                                 ;;
-						  *)
+                          *)
                                 echo "Invalid selection.Please select the valid option or type E to exit";continue;
                                 ;;
                         esac
@@ -135,3 +146,4 @@ echo "$PATH1" > current;echo "$PATH2" >> current;echo "$PATH3" >> current;echo "
   esac
   break
  done
+
