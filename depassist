@@ -106,12 +106,12 @@ printf '2. Shutdown\n'
                         while read SHUTDOWN;do
                         case $SHUTDOWN in
                           S)
-                                if [[ $(ps -ef | grep 'apache-tomcat-9.0.10' | grep java | grep -v grep | awk '{ print $2 }') ]];then
+                                if [[ $PID ]];then
                                 printf "############Shutting down tomcat.Please monitor the logs############\n";
                                 /app/dre/thirdparty/apache-tomcat-9.0.10/bin/shutdown.sh;
                                 printf '******Please wait for 15 seconds******\n'
                                         sleep 15;
-                                        if [[ $(ps -ef | grep 'apache-tomcat-9.0.10' | grep java | grep -v grep | awk '{ print $2 }') ]];then
+                                        if [[ $PID ]];then
                                         printf "TOMCAT is still running\n";
                                         printf "Type K to kill the tomcat forcefully\nType E for exit\n";
                                         while true; do
@@ -152,7 +152,7 @@ printf '2. Shutdown\n'
                                 printf 'Removing below packages\n';
                                 echo "$DELFILE1";
                                 echo "$DELFILE2";
-                                echo "$DELFILE1";
+                                echo "$DELFILE3";
                                 echo "$DELFILE4";
                                 cd ${DEPDIR};
                                 rm -rf "$DELFILE1" "$DELFILE1.war";
