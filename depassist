@@ -51,7 +51,6 @@ printf '2. Shutdown\n'
           echo "**************************Deploying $C1***************************";
           cd $D1/bin;
           ./upd-env $VARFILE1;
-#         $D1/bin/upd-env $VARFILE1;
           echo -e "2. $C2";echo -e "3. $C3";echo -e "4. $C4";echo "Type E to exit";continue;
           ;;
      2)
@@ -101,7 +100,6 @@ printf '2. Shutdown\n'
                   break
                   done;;
         2)
-#               echo "$PATH1" > /home/dreadmin/scripts/current;echo "$PATH2" >> /home/dreadmin/scripts/current;echo "$PATH3" >> /home/dreadmin/scripts/current;echo "$PATH4" >> /home/dreadmin/scripts/current
                 printf "Type S to shutdown the tomcat \nType R to remove the packages\nType E for exit\n"
                         while read SHUTDOWN;do
                         case $SHUTDOWN in
@@ -109,8 +107,8 @@ printf '2. Shutdown\n'
                                 if [[ $PID ]];then
                                 printf "############Shutting down tomcat.Please monitor the logs############\n";
                                 /app/dre/thirdparty/apache-tomcat-9.0.10/bin/shutdown.sh;
-                                printf '******Please wait for 15 seconds******\n'
-                                        sleep 15;
+                                printf '******Please wait for 30 seconds******\n'
+                                        sleep 30;
                                         if [[ $PID ]];then
                                         printf "TOMCAT is still running\n";
                                         printf "Type K to kill the tomcat forcefully\nType E for exit\n";
